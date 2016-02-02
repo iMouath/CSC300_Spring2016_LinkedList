@@ -1,8 +1,6 @@
 package com.example.awesomefat.linkedlist;
 
-import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * Created by awesomefat on 1/28/16.

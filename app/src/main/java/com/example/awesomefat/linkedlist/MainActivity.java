@@ -17,16 +17,26 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
 
+        ListCore.inflater = this.getLayoutInflater();
+
         LinearLayout svLL = (LinearLayout)this.findViewById(R.id.scrollViewLL);
         LinkedList ll = new LinkedList(svLL);
+
+        ll.addFront("Mouath");
+        ll.addFront("Android");
+        ll.addFront("TEST");
+        ll.removeFront();
+
         ll.display();
 
-        /*
 
-        View v;
-        for(int i = 0; i < 1000; i++)
+
+        /* View v;
+        for(int i = 0; i < 100; i++)
         {
             v = this.getLayoutInflater().inflate(R.layout.node, null);
+            TextView tf = (TextView) v.findViewById(R.id.theValueTF);
+            tf.setText(""+i);
             svLL.addView(v);
         }
         */

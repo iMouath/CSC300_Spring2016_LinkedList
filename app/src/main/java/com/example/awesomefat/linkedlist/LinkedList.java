@@ -1,6 +1,8 @@
 package com.example.awesomefat.linkedlist;
 
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * Created by awesomefat on 1/28/16.
@@ -19,22 +21,23 @@ public class LinkedList
     public void display()
     {
 
-        //Testing the function
 
-        addFront("MUATH");
-
-        addFront("Android");
-
-        removeFront();
 
 
         if(this.head == null)
         {
-           System.out.println("***** Empty List *****");
+           //System.out.println("***** Empty List *****");
+
+            View v;
+            v = ListCore.inflater.inflate(R.layout.node, null);
+            TextView tf = (TextView) v.findViewById(R.id.theValueTF);
+            tf.setText("Empty List");
+            this.layout.addView(v);
         }
         else
         {
             //display the list in a reasonable format
+            this.head.display(this.layout);
         }
 
     }

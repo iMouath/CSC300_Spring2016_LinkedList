@@ -6,11 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.List;
 
-/**
- * Created by awesomefat on 1/28/16.
- */
 public class Node
 {
     private String payload;

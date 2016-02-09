@@ -4,21 +4,24 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
+/**
+ * Created by awesomefat on 1/28/16.
+ */
 public class LinkedList
 {
     private Node head;
     private LinearLayout layout;
-
+    public int count;
     public LinkedList(LinearLayout layout)
     {
         this.head = null;
         this.layout = layout;
+        this.count = 0;
     }
 
     public void display()
     {
-        //this.layout.removeAllViews();
+        this.layout.removeAllViews();
         if(this.head == null)
         {
             View v = ListCore.inflater.inflate(R.layout.node, null);
@@ -37,12 +40,36 @@ public class LinkedList
         this.layout.addView(v);
     }
 
+    public Node getAtIndex(int i)
+    {
+        return null;
+    }
+
+    //inefficient, but accurate
+    public int count()
+    {
+        int count = 0;
+        if(head != null)
+        {
+            count++;
+            //at least one node in the list
+            Node currNode = head;
+            while(currNode.getNextNode() != null)
+            {
+                currNode = currNode.getNextNode();
+                count++;
+            }
+        }
+        return count;
+    }
+
     public void addFront(String value)
     {
         //this adds a new Node to the front of the list with payload == value
         Node n = new Node(value);
         n.setNextNode(this.head);
         this.head = n;
+        this.count++;
     }
 
     public Node removeFront()
@@ -54,49 +81,63 @@ public class LinkedList
         if(this.head != null)
         {
             this.head = this.head.getNextNode();
+            nodeToReturn.setNextNode(null);
+            this.count--;
         }
-        nodeToReturn.setNextNode(null);
+
         return nodeToReturn;
     }
 
     public void addEnd(String value)
     {
-        Node n = new Node(value);
-        //if head is empty
-        if (this.head == null)
-            this.head = n;
+        if(this.head == null)
+        {
+            this.addFront(value);
+        }
         else
         {
-            // search for the the end by checking if there's next or not
-            Node temp = this.head; // starts with the first node.
-            while (temp.getNextNode() != null) //loop till last node
-                temp = temp.getNextNode();
-            temp.setNextNode(n); //set last node to value
+            Node n = new Node(value);
+            Node currNode = head;
+            while(currNode.getNextNode() != null)
+            {
+                currNode = currNode.getNextNode();
+            }
+            //currNode is currently pointing at the last node in the list
+            currNode.setNextNode(n);
+            this.count++;
         }
     }
+
     public Node removeEnd()
     {
-        if (this.head == null) //nothing to remove
+        if(head == null)
         {
-            return null;
+            return head;
         }
-        else {
-            if (this.head.getNextNode() == null) { //2 element list remove last
-                Node node = this.head;
-                this.head = null;
-                return node;
-            } else { // find end and set it to null
-                Node current = this.head;
-                Node returnedNode = current.getNextNode();
-                while (current.getNextNode() != null && returnedNode.getNextNode() != null) {
-                    current = current.getNextNode();
-                    returnedNode = current.getNextNode();
+        else
+        {
+            this.count--;
+            Node nodeToReturn = head;
+            //deal with the 1-list special case
+            if(head.getNextNode() == null)
+            {
+                head = null;
+                return nodeToReturn;
+            }
+            else
+            {
+                //there are at least 2 nodes in the list
+                Node currNode = head;
+                while (currNode.getNextNode() != null && currNode.getNextNode().getNextNode() != null)
+                {
+                    currNode = currNode.getNextNode();
                 }
-                current.setNextNode(null);
-                return returnedNode;
+                //currNode points to the Node right before the last node in the list
+                nodeToReturn = currNode.getNextNode();
+                currNode.setNextNode(null);
+                return nodeToReturn;
             }
         }
-
-
     }
+
 }

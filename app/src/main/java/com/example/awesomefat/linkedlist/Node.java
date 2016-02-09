@@ -9,8 +9,6 @@ public class Node
 {
     private String payload;
     private Node nextNode;
-    private TextView valueLabel;
-    private LinearLayout layout;
 
     public Node(String payload)
     {

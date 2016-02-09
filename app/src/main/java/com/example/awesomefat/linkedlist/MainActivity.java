@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -16,6 +14,7 @@ public class MainActivity extends AppCompatActivity
     private Button removeFrontButton;
     private Button removeEndButton;
     private EditText newValueEditText;
+    private LinkedList ll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,15 +29,17 @@ public class MainActivity extends AppCompatActivity
         this.removeEndButton = (Button)this.findViewById(R.id.removeEndButton);
         this.newValueEditText = (EditText)this.findViewById(R.id.newValueET);
 
-        ListCore.inflater = this.getLayoutInflater();
 
+        ListCore.inflater = this.getLayoutInflater();
         LinearLayout svLL = (LinearLayout)this.findViewById(R.id.scrollViewLL);
-        LinkedList ll = new LinkedList(svLL);
-        //ll.addFront("1");
-        //ll.addFront("2");
-        //ll.addFront("3");
-        //ll.addFront("4");
-        //ll.display();
+        ll = new LinkedList(svLL);
+
+
+        ll.addFront("1");
+        ll.addFront("2");
+        ll.addFront("3");
+        ll.addFront("4");
+        ll.display();
         ll.removeFront();
         ll.display();
         ll.addEnd("6");
@@ -47,9 +48,11 @@ public class MainActivity extends AppCompatActivity
         ll.display();
         ll.removeEnd();
         ll.display();
-
         System.out.println("**** " + ll.count);
         System.out.println("**** " + ll.count());
+
+
+
         /*
         View v;
         for(int i = 0; i < 10; i++)
@@ -60,7 +63,8 @@ public class MainActivity extends AppCompatActivity
             svLL.addView(v);
         }
         */
-    }
+        }
+
 
     public void aButtonClicked(View sender)
     {
@@ -68,19 +72,28 @@ public class MainActivity extends AppCompatActivity
         {
             System.out.println("**** add front button pressed");
             System.out.println("adding: " + this.newValueEditText.getText());
+
+            ll.addFront(String.valueOf(this.newValueEditText.getText()));
         }
         else if(sender == this.addEndButton)
         {
             System.out.println("**** add end button pressed");
             System.out.println("adding: " + this.newValueEditText.getText());
+
+            ll.addEnd(String.valueOf(this.newValueEditText.getText()));
         }
         else if(sender == this.removeFrontButton)
         {
             System.out.println("**** remove front button pressed");
+
+            ll.removeFront();
         }
         else if(sender == this.removeEndButton)
         {
             System.out.println("**** remove end button pressed");
+
+            ll.removeEnd();
         }
+        ll.display();
     }
 }

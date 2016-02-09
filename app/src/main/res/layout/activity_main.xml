@@ -21,8 +21,8 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -36,7 +36,8 @@
                     android:id="@+id/newValueET"
                     android:editable="true"
                     android:enabled="true"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:inputType="text" />
 
             </LinearLayout>
 
@@ -80,6 +81,7 @@
                     android:text="Remove End"
                     android:id="@+id/removeEndButton"
                     android:onClick="aButtonClicked"/>
+
             </LinearLayout>
         </LinearLayout>
         <ScrollView
@@ -91,8 +93,9 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/scrollViewLL">
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollViewLL"
+                android:showDividers="beginning|middle|end">
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

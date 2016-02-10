@@ -44,8 +44,11 @@ public class Node
                 //and then ask the list to display itself, which should update the entire
                 //view.  That is to say, we will no longer need to hide ourself.
                 System.out.println("***** Text Was Clicked: " + payload);
-                valueLabel.setVisibility(View.GONE);
+                //valueLabel.setVisibility(View.GONE);
                 System.out.println("**** Position = " + ListCore.ll.indexOf(myself));
+                ListCore.ll.removeNode(myself, ListCore.ll.indexOf(myself)); // Call to removeNode with arug (Node,Index)
+                ListCore.ll.display(); //onClick recall display
+
 
             }
         });

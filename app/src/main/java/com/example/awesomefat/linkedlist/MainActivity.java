@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity
 
         LinearLayout svLL = (LinearLayout)this.findViewById(R.id.scrollViewLL);
         ListCore.ll = new LinkedList(svLL);
-        //ll.addFront("1");
-        //ll.addFront("2");
-        //ll.addFront("3");
-        //ll.addFront("4");
-        //ll.display();
-        ListCore.ll.addEnd("6");
-        ListCore.ll.addEnd("7");
-        ListCore.ll.addEnd("8");
+        ListCore.ll.addFront("1");
+        ListCore.ll.addFront("2");
+        ListCore.ll.addFront("3");
+        ListCore.ll.addFront("4");
+        ListCore.ll.addFront("5");
+        ListCore.ll.addFront("6");
+        ListCore.ll.addFront("7");
+        ListCore.ll.addFront("8");
         ListCore.ll.display();
 
         /*

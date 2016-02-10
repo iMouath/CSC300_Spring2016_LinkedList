@@ -131,11 +131,12 @@ public class LinkedList
         }
     }
 
+
     public Node removeEnd()
     {
         if(head == null)
         {
-            return head;
+            return null;
         }
         else
         {
@@ -160,6 +161,25 @@ public class LinkedList
                 currNode.setNextNode(null);
                 return nodeToReturn;
             }
+        }
+    }
+
+    public void removeNode(Node nodeToRemove, int posOfNode) {
+        System.out.println("Node To remove: " + nodeToRemove);
+
+        if (posOfNode == 0) //if Node @front
+        {
+            removeFront();
+        } else if (count - 1 == posOfNode) //if Node @End
+        {
+            removeEnd();
+        } else { //find the Prev & Next and connect them
+            Node PrevNode = head;
+            for (int i = 0; i < posOfNode - 1; i++) {
+                PrevNode = PrevNode.getNextNode();
+            }
+            Node NextNode = nodeToRemove.getNextNode();
+            PrevNode.setNextNode(NextNode);
         }
     }
 

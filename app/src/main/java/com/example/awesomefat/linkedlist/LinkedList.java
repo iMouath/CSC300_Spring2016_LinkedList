@@ -21,7 +21,16 @@ public class LinkedList
     {
         //this guy should add a new Node to the list with payload = value at the specified
         //index assuming that index is a legal position in the list.
-        
+        Node newNode = new Node(value);
+        Node nodeBefore = head;
+        Node nodeAfter = null;
+        for(int i = 0; i< index-1; i++)
+        {
+            nodeBefore = nodeBefore.getNextNode();
+        }
+        nodeAfter = nodeBefore.getNextNode();
+        nodeBefore.setNextNode(newNode);
+        newNode.setNextNode(nodeAfter);
     }
     public Node removeAtIndex(int index)
     {

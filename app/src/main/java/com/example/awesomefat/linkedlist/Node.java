@@ -51,14 +51,23 @@ public class Node
 
                 PopupMenu popup = new PopupMenu(ListCore.mainActivity, v);
                 popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
-                {
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
-                    public boolean onMenuItemClick(MenuItem item)
-                    {
-                        if (item.getTitle().equals("DELETE"))
-                        {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if (item.getTitle().equals("DELETE")) {
                             ListCore.ll.removeAtIndex(ListCore.ll.indexOf(myself));
+                            ListCore.ll.display();
+                        }
+                        if (item.getTitle().equals("ADD ABOVE"))
+                        {
+                            ListCore.ll.addAtIndex("TEST*ABOVE",ListCore.ll.indexOf(myself));
+                            ListCore.ll.display();
+                        }
+                        if (item.getTitle().equals("ADD BELOW"))
+                        {
+                            int temp = ListCore.ll.indexOf(myself);
+                            temp++;
+                            ListCore.ll.addAtIndex("TEST*BELOW",temp);
                             ListCore.ll.display();
                         }
                         return true;

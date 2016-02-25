@@ -20,6 +20,7 @@
             android:text="Pop"
             android:id="@+id/theButton"
             android:layout_gravity="center_horizontal"
+            android:onClick="buttonClicked"
             />
     </LinearLayout>
 </FrameLayout>
